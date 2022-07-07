@@ -1,6 +1,6 @@
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
+  "name": "InstantTutor",
+  "description": "Get help on anything, anytime!",
   "version": "1.0",
   "manifest_version": 3,
   "action": {

@@ -1,0 +1,28 @@
+.request-table-container {
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+}
+
+.testbtn {
+  position: relative;
+  top: 500px;
+}
+
+.sessionrequest-table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.sessionrequest-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: aquamarine;
+  width: 700px;
+  border: 2px solid black;
+}

@@ -7,45 +7,11 @@ function Popup() {
 
   function sendSessionRequestCommand(): void {
     chrome.runtime.sendMessage({ command: "sessionreq" }, function (response) {
-      if (response.status === "ok") {
-      } else if (response.status === "error") {
-      }
+      // if (response.status === "ok") {
+      // } else if (response.status === "error") {
+      // }
     });
   }
-
-  // function onCaptured(imageUrl: string) {
-  //   console.log(imageUrl);
-  //   setImgSrc(imageUrl);
-
-  //   const requestBody = {
-  //     userID: 12345,
-  //     screenshotSRC: imgSrc,
-  //   };
-
-  //   fetch("http://localhost:3000/scr", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     credentials: "include",
-  //     body: JSON.stringify(requestBody),
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((parsedResponse) => {
-  //       console.log(parsedResponse);
-  //     });
-  // }
-
-  // function onError(error: string): void {
-  //   console.log(`Error: ${error}`);
-  // }
-
-  // const captureTab = (): void => {
-  //   let taburl = chrome.tabs.captureVisibleTab();
-  //   taburl.then(onCaptured, onError);
-  // };
 
   return (
     <div>
