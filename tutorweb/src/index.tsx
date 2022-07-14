@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SessionReqTable from "./components/SessionReqTable";
-import Expenses from "./routes/expenses";
-import Invoices from "./routes/invoices";
 import Session from "./components/Session";
 import "./index.css";
 import App from "./App";

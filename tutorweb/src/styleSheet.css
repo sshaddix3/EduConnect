@@ -26,3 +26,42 @@
   width: 700px;
   border: 2px solid black;
 }
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#whiteboard-canvas {
+  position: relative;
+  border: 1px solid black;
+}
+
+#whiteboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#whiteboard-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+#undo-redo-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#pen-eraser-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
