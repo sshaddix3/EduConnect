@@ -30,7 +30,7 @@ const CreateSession = ({ userid, tabcapture, tutorid }: CreateSessionProps) => {
       })
       .then((parsedResponse) => {
         console.log(parsedResponse);
-        navigate(navlink + parsedResponse.id);
+        navigate(navlink + parsedResponse.id, {});
       });
   };
 

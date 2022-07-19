@@ -34,6 +34,21 @@
   gap: 30px;
 }
 
+#tabcapture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+#see-tabcapture-text {
+  color: blue;
+}
+#see-tabcapture-text:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 #whiteboard-canvas {
   position: relative;
   border: 1px solid black;

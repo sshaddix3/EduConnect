@@ -109,6 +109,26 @@ app.post("/checkActiveSessions", (req, res) => {
     });
 });
 
+app.post("/startSession", (req, res) => {});
+
+app.post("/login", (req, res) => {
+  res.status(200).json({
+    authUser: {
+      id: 2,
+      name: "John Doe",
+    },
+  });
+});
+
+app.get("/auth", (req, res) => {
+  res.status(200).json({
+    authUser: {
+      id: 2,
+      name: "John Doe",
+    },
+  });
+});
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
