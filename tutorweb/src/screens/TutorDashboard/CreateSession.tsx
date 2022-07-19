@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Session from "./Session";
+import { Session } from "../Session/Session";
 import SessionReqTable from "./SessionReqTable";
 import { CreateSessionProps } from "./SessionReqTable";
 

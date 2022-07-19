@@ -3,8 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import SessionAudio from "./SessionAudio";
 import Whiteboard from "./Whiteboard";
-import { useAuth } from "../contexts/auth";
-import { ProtectedRoute } from "./ProtectedRoute";
+import { useAuth } from "../../contexts/auth";
+import { ProtectedRoute } from "../../shared/ProtectedRoute";
 
 const SessionContent = () => {
   let params = useParams();
@@ -32,12 +32,10 @@ const SessionContent = () => {
   );
 };
 
-const Session = () => {
+export const Session = () => {
   return (
     <ProtectedRoute>
       <SessionContent></SessionContent>
     </ProtectedRoute>
   );
 };
-
-export default Session;

@@ -2,33 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import SessionReqTable from "./components/SessionReqTable";
-import Session from "./components/Session";
-import AwaitingSession from "./components/AwaitingSession";
-import StartSession from "./components/StartSession";
-import { Login } from "./components/Login";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import { App } from "./App";
+import { Session } from "./screens/Session";
+import { Login } from "./screens/Login";
+import { TutorDashboard } from "./screens/TutorDashboard";
 
-import { AuthCheck } from "./components/AuthCheck";
-import { AuthProvider } from "./contexts/auth";
+import reportWebVitals from "./reportWebVitals";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <AuthProvider>
-    <AuthCheck>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="/session/:sessionId" element={<Session />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthCheck>
-  </AuthProvider>
+  <App>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TutorDashboard />} />
+        <Route path="/session/:sessionId" element={<Session />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  </App>
 );
 
 // If you want to start measuring performance in your app, pass a function

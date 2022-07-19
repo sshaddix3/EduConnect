@@ -1,22 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Link, Outlet } from "react-router-dom";
-
+import { AuthCheck } from "./shared/AuthCheck";
 import { AuthProvider } from "./contexts/auth";
-import "./App.css";
-import "./styleSheet.css";
-import SessionReqTable from "./components/SessionReqTable";
-import { ProtectedRoute } from "./components/ProtectedRoute";
 
-function App() {
-  return (
-    <ProtectedRoute>
-      <div className="App">
-        <p>InstantTutor - Tutor View</p>
-        <SessionReqTable></SessionReqTable>
-      </div>
-    </ProtectedRoute>
-  );
+interface IAppProps {
+  children: React.ReactNode;
 }
 
-export default App;
+export const App: React.FC<IAppProps> = ({ children }) => {
+  return (
+    <AuthProvider>
+      <AuthCheck>{children}</AuthCheck>
+    </AuthProvider>
+  );
+};
