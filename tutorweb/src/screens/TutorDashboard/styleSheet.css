@@ -34,6 +34,23 @@
   gap: 30px;
 }
 
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.google-login-btn {
+  position: relative;
+  margin: 0 auto;
+}
+
+#dashboard-greeting {
+  position: relative;
+  margin-bottom: 10px;
+}
+
 #tabcapture-container {
   display: flex;
   flex-direction: column;
@@ -55,6 +72,8 @@
 }
 
 #whiteboard-container {
+  position: relative;
+  top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,6 +96,20 @@
 
 #pen-eraser-btns {
   display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.pen-eraser-options {
+  display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.mute-button {
+  all: unset;
+  cursor: pointer;
+}
+.mute-button:hover {
+  color: red;
 }

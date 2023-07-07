@@ -5,11 +5,34 @@ const dbClient = new Client({
   user: "postgres",
   host: "127.0.0.1",
   database: "InstantTutor",
-  password: "Yosemite2001!",
+  password: "sshaddix",
   port: 5432,
 });
 
 dbClient.connect();
+
+//
+const getUserInfo = (userID) => {
+  return dbClient
+    .query(
+      `SELECT google_userid, email, name, role, firstname FROM users WHERE google_userid = ($1)`,
+      [userID]
+    )
+    .then((res) => {
+      return res.rows[0];
+    });
+};
+
+const insertUserInfo = (userID, email, name, role, firstname) => {
+  return dbClient
+    .query(
+      `INSERT INTO users (google_userid, email, name, role, firstname) VALUES ($1, $2, $3, $4, $5)`,
+      [userID, email, name, role, firstname]
+    )
+    .then((res) => {
+      return res.rows;
+    });
+};
 
 const insertSessionRequest = (userID, scrshtUrl) => {
   return dbClient
@@ -40,11 +63,11 @@ const getActiveSessionID = (scrshtUrl) => {
     });
 };
 
-const insertActiveSession = (tutorID, studentID, scrshtUrl) => {
+const insertActiveSession = (tutorID, studentID, scrshtUrl, sessionStarted) => {
   return dbClient
     .query(
-      `INSERT INTO activesessions (tutorid, studentid, tabcaptureimg) VALUES ($1, $2, $3)`,
-      [tutorID, studentID, scrshtUrl]
+      `INSERT INTO activesessions (tutorid, studentid, tabcaptureimg, sessionstarted) VALUES ($1, $2, $3, $4)`,
+      [tutorID, studentID, scrshtUrl, sessionStarted]
     )
     .then((res) => {
       return getActiveSessionID(scrshtUrl);
@@ -59,10 +82,34 @@ const checkActiveSessions = (studentID) => {
     });
 };
 
+const setSessionStarted = (sessionID) => {
+  return dbClient
+    .query(`UPDATE activesessions SET sessionstarted = true WHERE id = ($1)`, [
+      sessionID,
+    ])
+    .then((res) => {
+      return res.rows;
+    });
+};
+
+const checkSessionStarted = (sessionID) => {
+  return dbClient
+    .query(`SELECT sessionstarted FROM activesessions WHERE id = ($1)`, [
+      sessionID,
+    ])
+    .then((res) => {
+      return res.rows;
+    });
+};
+
 module.exports = {
+  getUserInfo,
+  insertUserInfo,
   insertSessionRequest,
   getSessionRequests,
   getActiveSessionID,
   insertActiveSession,
   checkActiveSessions,
+  setSessionStarted,
+  checkSessionStarted,
 };

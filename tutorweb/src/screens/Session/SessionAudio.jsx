@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
+import { useAuth } from "../../contexts/auth";
 
 const socket = io("http://localhost:5000");
 
@@ -20,6 +21,17 @@ const SessionAudio = () => {
 
   let params = useParams();
   const sessionID = params.sessionId;
+
+  const auth = useAuth();
+
+  /*When page loads, have function for tutor to set up their audio (make them initiator), 
+  then allow them to "start" the session, so student can join
+  
+  While tutor is starting session, put student in a waiting area,
+
+  Should probably make separate component for waiting room
+  */
+  const tutorInitSession = () => {};
 
   useEffect(() => {
     socket.on("mySocketID", (id) => {
@@ -81,6 +93,8 @@ const SessionAudio = () => {
     });
   };
 
+  //THIS FUNCTION ACTS AS ANSWER CALL, CALL IT WHEN STUDENT IS BROUGHT INTO SESSION
+
   const connectPeers2 = () => {
     setCallAccepted(true);
 
@@ -110,7 +124,11 @@ const SessionAudio = () => {
 
   return (
     <div className="session-container">
-      <button onClick={acceptedAudio}>click</button>
+      {/* SET "myAudio" AND "otherAudio" BY PASSING AUDIO DATA TO SESSION USING PROPS,
+      THEN USE REFS THERE LIKE BELOW, ALL OTHER LOGIC CAN BE IN TUTORINIT AND STUDENTWAIT*/}
+      <audio ref={myAudio} muted autoPlay></audio>
+      <audio ref={otherAudio} autoPlay></audio>
+      {/* <button onClick={acceptedAudio}>click</button>
       <audio ref={myAudio} muted autoPlay></audio>
       {!callEnded && <audio ref={otherAudio} autoPlay></audio>}
       <button onClick={connectPeers1}>Start Call</button>
@@ -122,7 +140,7 @@ const SessionAudio = () => {
       ) : null}
       {callAccepted && !callEnded ? (
         <button onClick={endCall}>End Call</button>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

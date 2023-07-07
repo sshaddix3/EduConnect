@@ -6,8 +6,9 @@
   "action": {
     "default_popup": "popup.html"
   },
+  "host_permissions": ["http://localhost:3001/"],
   "background": {
     "service_worker": "serviceWorker.js"
   },
-  "permissions": ["tabs", "activeTab"]
+  "permissions": ["tabs", "activeTab", "identity", "storage", "cookies"]
 }

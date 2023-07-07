@@ -14,10 +14,14 @@ function SessionReqTable() {
         return res.json();
       })
       .then((parsedResponse) => {
-        for (let i: number = 0; i < parsedResponse.requests.length; i++) {
-          sessionReqArr.push(parsedResponse.requests[i]);
+        for (
+          let i: number = 0;
+          i < parsedResponse.sessionRequests.length;
+          i++
+        ) {
+          sessionReqArr.push(parsedResponse.sessionRequests[i]);
         }
-        setSessionRequests(parsedResponse.requests);
+        setSessionRequests(parsedResponse.sessionRequests);
       });
   };
 

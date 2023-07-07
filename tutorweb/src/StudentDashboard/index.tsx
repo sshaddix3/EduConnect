@@ -1,22 +1,20 @@
 import React from "react";
 
-import "./App.css";
 import "./styleSheet.css";
-import SessionReqTable from "./SessionReqTable";
-import { ProtectedRoute } from "../../shared/ProtectedRoute";
-import { useAuth } from "../../contexts/auth";
+import { ProtectedRoute } from "../shared/ProtectedRoute";
+import { useAuth } from "../contexts/auth";
 
-export function TutorDashboard() {
+export function StudentDashboard() {
   const auth = useAuth();
 
   return (
     <ProtectedRoute>
       <div className="App">
-        <p>InstantTutor - Tutor View</p>
+        <p>InstantTutor - Student View</p>
         <div id="dashboard-greeting">
           Hi {auth.authUser?.firstname} - {auth.authUser?.role}
         </div>
-        <SessionReqTable></SessionReqTable>
+        <div>Download the Chrome Extension</div>
       </div>
     </ProtectedRoute>
   );

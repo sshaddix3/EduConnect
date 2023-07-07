@@ -37,13 +37,13 @@ const Whiteboard = () => {
     }
   }, []);
 
-  const startPosition = (e: any) => {
+  const startPosition = (e: MouseEvent) => {
     painting = true;
     //to draw dots, not just drawing on movement
     draw(e);
   };
 
-  const endPosition = (e: any) => {
+  const endPosition = (e: MouseEvent) => {
     painting = false;
     globalContext.beginPath();
 
@@ -55,7 +55,7 @@ const Whiteboard = () => {
     }
   };
 
-  const draw = (e: any) => {
+  const draw = (e: MouseEvent) => {
     if (!painting) {
       return;
     }
@@ -77,12 +77,12 @@ const Whiteboard = () => {
     );
   };
 
-  const startPositionErasing = (e: any) => {
+  const startPositionErasing = (e: MouseEvent) => {
     erasing = true;
     eraser(e);
   };
 
-  const endPositionErasing = (e: any) => {
+  const endPositionErasing = (e: MouseEvent) => {
     erasing = false;
     globalContext.beginPath();
 
@@ -104,7 +104,7 @@ const Whiteboard = () => {
     globalCanvi.addEventListener("mouseup", endPositionErasing);
   };
 
-  const eraser = (e: any) => {
+  const eraser = (e: MouseEvent) => {
     if (!erasing) {
       return;
     }

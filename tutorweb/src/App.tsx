@@ -3,7 +3,7 @@ import { AuthCheck } from "./shared/AuthCheck";
 import { AuthProvider } from "./contexts/auth";
 
 interface IAppProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const App: React.FC<IAppProps> = ({ children }) => {

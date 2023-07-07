@@ -17,9 +17,11 @@ const AuthContext = React.createContext<IAuthContext>({
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [authUser, setAuthUser] = React.useState<IUser | undefined>(undefined);
+
   const setAuth = (user: IUser) => {
     setAuthUser(user);
   };
+
   const value = useMemo(() => {
     return { authUser, setAuth };
   }, [authUser]);
