@@ -5,7 +5,7 @@ const dbClient = new Client({
   user: "postgres",
   host: "127.0.0.1",
   database: "InstantTutor",
-  password: "Yosemite2001!",
+  password: "******",
   port: 5432,
 });
 
