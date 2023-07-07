@@ -1,4 +1,4 @@
-# InstantTutor
+# EduConnect
 
 To run the web application that serves as the tutor dashboard, clone the repository, simply cd into the tutorweb folder, and run the command "npm install", followed by "npm start".
 
