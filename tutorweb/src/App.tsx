@@ -1,13 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { AuthCheck } from "./shared/AuthCheck";
+import { AuthProvider } from "./contexts/auth";
 
-function App() {
-  return (
-    <div className="App">
-      <p>InstantTutorWeb</p>
-    </div>
-  );
+interface IAppProps {
+  children?: React.ReactNode;
 }
 
-export default App;
+export const App: React.FC<IAppProps> = ({ children }) => {
+  return (
+    <AuthProvider>
+      <AuthCheck>{children}</AuthCheck>
+    </AuthProvider>
+  );
+};

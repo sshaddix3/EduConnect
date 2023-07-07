@@ -1,0 +1,115 @@
+.request-table-container {
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+}
+
+.testbtn {
+  position: relative;
+  top: 500px;
+}
+
+.sessionrequest-table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.sessionrequest-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: aquamarine;
+  width: 700px;
+  border: 2px solid black;
+}
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.google-login-btn {
+  position: relative;
+  margin: 0 auto;
+}
+
+#dashboard-greeting {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#tabcapture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+#see-tabcapture-text {
+  color: blue;
+}
+#see-tabcapture-text:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#whiteboard-canvas {
+  position: relative;
+  border: 1px solid black;
+}
+
+#whiteboard-container {
+  position: relative;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#whiteboard-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+#undo-redo-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#pen-eraser-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.pen-eraser-options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mute-button {
+  all: unset;
+  cursor: pointer;
+}
+.mute-button:hover {
+  color: red;
+}

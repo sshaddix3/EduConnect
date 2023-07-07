@@ -1,58 +1,72 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { render } from "react-dom";
 
+declare const google: any;
+
 function Popup() {
-  const [imgSrc, setImgSrc] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [lookingForTutor, setLookingForTutor] = useState(null);
 
   function sendSessionRequestCommand(): void {
     chrome.runtime.sendMessage({ command: "sessionreq" }, function (response) {
       if (response.status === "ok") {
+        setLookingForTutor(<div>Looking for Tutor</div>);
+      } else if (response.status === "foundTutor") {
+        setLookingForTutor(<div>Found Tutor</div>);
       } else if (response.status === "error") {
       }
     });
   }
 
-  // function onCaptured(imageUrl: string) {
-  //   console.log(imageUrl);
-  //   setImgSrc(imageUrl);
+  function sendLogInCommand(): void {
+    chrome.runtime.sendMessage({ command: "login" }, function (response) {
+      console.log(response);
+      if (response.status === "loggedin") {
+        setLoggedIn(true);
+      }
+    });
+  }
 
-  //   const requestBody = {
-  //     userID: 12345,
-  //     screenshotSRC: imgSrc,
-  //   };
+  function logOut() {
+    setLoggedIn(false);
+    chrome.cookies.remove({ url: "http://localhost:3001", name: "userID" });
+  }
 
-  //   fetch("http://localhost:3000/scr", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     credentials: "include",
-  //     body: JSON.stringify(requestBody),
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((parsedResponse) => {
-  //       console.log(parsedResponse);
-  //     });
-  // }
+  useEffect(() => {
+    //DO I EVEN NEED TO ACCESS USER IN POPUP? If not then I dont need to set cookie for anything or request server for info
 
-  // function onError(error: string): void {
-  //   console.log(`Error: ${error}`);
-  // }
+    // chrome.cookies.remove({ url: "http://localhost:3001", name: "userID" });
+    chrome.cookies.get(
+      { url: "http://localhost:3001", name: "userID" },
+      function (cookie) {
+        if (cookie) {
+          setLoggedIn(true);
+        } else {
+          console.log("Can't get cookie! Check the name!");
+        }
+      }
+    );
 
-  // const captureTab = (): void => {
-  //   let taburl = chrome.tabs.captureVisibleTab();
-  //   taburl.then(onCaptured, onError);
-  // };
+    // chrome.storage.sync.get(["loggedin"], function (result) {
+    //   if (result.loggedin) {
+    //     setLoggedIn(true);
+    //   }
+    // });
+  }, []);
 
   return (
     <div>
-      <h1>Hello, world!</h1>
-      <p>popup!</p>
-      <PopupButton onClick={sendSessionRequestCommand} />
-      {imgSrc != "" && <img src={imgSrc} width="550" height="300"></img>}
+      {/* <div id="buttonDiv"></div> */}
+      <h1>Instant Tutor</h1>
+      {loggedIn && (
+        <div>
+          <PopupButton onClick={sendSessionRequestCommand} />
+          {lookingForTutor}
+          <button onClick={logOut}>Logout</button>
+        </div>
+      )}
+      {!loggedIn && <button onClick={sendLogInCommand}>Log in</button>}
     </div>
   );
 }
@@ -62,7 +76,7 @@ interface PopupButtonProps {
 }
 
 const PopupButton: React.FC<PopupButtonProps> = ({ onClick }) => {
-  return <button onClick={onClick}>Click</button>;
+  return <button onClick={onClick}>Session Request</button>;
 };
 
 render(<Popup />, document.getElementById("react-target"));
